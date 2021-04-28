@@ -21,11 +21,11 @@ public interface PetService {
 
     List<PetDto> findByName(String name);
 
-    List<PetDto> findByPetTyeName(PetType name);
+    List<PetDto> findByPetTyeName(String name);
 
-    List<PetDto> findByOwnerFirstNameAndOwnerLastName(Owner firstName, Owner lastName);
+    List<PetDto> findByOwnerFirstNameAndOwnerLastName(String firstName, String lastName);
 
-    List<PetDto> findByOwnerTelephone(Owner telephone);
+    List<PetDto> findByOwnerTelephone(String telephone);
 
 
 }
