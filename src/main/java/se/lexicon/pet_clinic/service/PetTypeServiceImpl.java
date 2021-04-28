@@ -10,6 +10,7 @@ import se.lexicon.pet_clinic.repository.PetTypeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,14 +41,20 @@ public class PetTypeServiceImpl implements PetTypeService {
     @Override
     public PetTypeDto update(PetTypeDto dto) {
         if (dto == null) throw new IllegalArgumentException("OwnerDto object should not be null");
-        List<PetType> list = petTypeRepository.findById(dto.getId());
+        Optional<PetType> list = petTypeRepository.findById(dto.getId());
         return modelMapper.map(petTypeRepository.save(modelMapper.map(dto, PetType.class)), PetTypeDto.class);
         // return petTypeRepository.findById(dto.getId()).stream().map(petType -> modelMapper.map(dto,PetType.class)),PetTypeDto.class;
     }
 
     @Override
     public void delete(int id) {
+        if (id == 0) throw new IllegalArgumentException("Id should not be null");
+        Optional<PetType> optionalPetType = petTypeRepository.findById(id);
+        if (optionalPetType.isPresent()) {
+            PetType petTypeEntity = modelMapper.map(optionalPetType, PetType.class);
+            petTypeRepository.delete(petTypeEntity);
 
+        }
     }
 
     @Override
@@ -62,7 +69,14 @@ public class PetTypeServiceImpl implements PetTypeService {
 
     @Override
     public PetTypeDto findById(int id) throws DataNotFoundException {
-        return null;
+        if (id == 0) throw new IllegalArgumentException("Id should not be null");
+        Optional<PetType> optionalPetType = petTypeRepository.findById(id);
+        if (optionalPetType.isPresent()) {
+            PetTypeDto covertToDto = modelMapper.map(optionalPetType.get(), PetTypeDto.class);
+            return covertToDto;
+        } else throw new DataNotFoundException("PetTypeDto not found");
 
     }
+
+
 }
