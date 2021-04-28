@@ -1,7 +1,18 @@
 package se.lexicon.pet_clinic.service;
 
+import se.lexicon.pet_clinic.dto.PetTypeDto;
+
+import java.util.List;
+
 public interface PetTypeService {
 
-    // todo: define SAVE, UPDATE, DELETE, Find All, FIND BY ID
+    PetTypeDto save(PetTypeDto dto);
 
+    PetTypeDto update(PetTypeDto dto);
+
+    void delete(int id);
+
+    List<PetTypeDto> findAll();
+
+    PetTypeDto findById(int id);
 }
