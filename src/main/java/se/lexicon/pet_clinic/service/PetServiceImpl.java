@@ -1,6 +1,8 @@
 package se.lexicon.pet_clinic.service;
 
+import org.springframework.stereotype.Service;
 
-public class PetServiceImpl {
+@Service
+public class PetServiceImpl implements PetService{
     // todo: implement PetService Interface
 }
