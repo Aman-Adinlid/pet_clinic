@@ -2,6 +2,7 @@ package se.lexicon.pet_clinic.repository;
 
 
 import org.springframework.data.repository.CrudRepository;
+import se.lexicon.pet_clinic.entity.Owner;
 import se.lexicon.pet_clinic.entity.Pet;
 import se.lexicon.pet_clinic.entity.PetType;
 
@@ -11,9 +12,9 @@ public interface PetRepository extends CrudRepository<Pet, String> {
 
     List<Pet> findByName(String name);
 
-    List<Pet> findPetByPetType(PetType petType);
+    List<Pet> findPetByPetTypeName(PetType name);
 
-    List<Pet> findPetByOwnerFirstNameAndOwnerLastName(String firstName, String lastName);
+    List<Pet> findPetByOwnerFirstNameAndOwnerLastName(Owner firstName, Owner lastName);
 
-    List<Pet> findByOwnerTelephone(String telephone);
+    List<Pet> findByOwnerTelephone(Owner telephone);
 }
