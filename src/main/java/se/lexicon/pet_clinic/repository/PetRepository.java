@@ -10,7 +10,7 @@ public interface PetRepository extends CrudRepository<Pet, String> {
 
     List<Pet> findByName(String name);
 
-    List<Pet> findPetByPetTypeName(String name);
+    List<Pet> findByPetTypeName(String petTypeName);
 
     List<Pet> findPetByOwnerFirstNameAndOwnerLastName(String firstName, String lastName);
 

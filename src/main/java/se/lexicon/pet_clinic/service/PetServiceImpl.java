@@ -91,12 +91,13 @@ public class PetServiceImpl implements PetService {
     @Override
     public List<PetDto> findByPetTyeName(String name) {
         List<Pet> petList = new ArrayList<>();
-        petRepository.findPetByPetTypeName(name);
+        petRepository.findByPetTypeName(name);
         List<PetDto> list = petList.stream()
                 .map(pet -> modelMapper.map(pet, PetDto.class))
                 .collect(Collectors.toList());
         return list;
     }
+
 
     @Override
     public List<PetDto> findByOwnerFirstNameAndOwnerLastName(String firstName, String lastName) {

@@ -1,8 +1,6 @@
 package se.lexicon.pet_clinic.service;
 
 import se.lexicon.pet_clinic.dto.PetDto;
-import se.lexicon.pet_clinic.entity.Owner;
-import se.lexicon.pet_clinic.entity.PetType;
 import se.lexicon.pet_clinic.exception.DataNotFoundException;
 
 import java.util.List;
