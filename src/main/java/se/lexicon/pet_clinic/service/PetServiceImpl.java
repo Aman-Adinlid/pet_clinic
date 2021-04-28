@@ -64,6 +64,7 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public void deleteById(String id) {
+        petRepository.deleteById(id);
 
     }
 
@@ -79,24 +80,41 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public List<PetDto> findByName(String name) {
-        return null;
+        List<Pet> petList = new ArrayList<>();
+        petRepository.findByName(name);
+        List<PetDto> list = petList.stream()
+                .map(pet -> modelMapper.map(pet, PetDto.class))
+                .collect(Collectors.toList());
+        return list;
     }
 
     @Override
     public List<PetDto> findByPetTyeName(String name) {
-        return null;
+        List<Pet> petList = new ArrayList<>();
+        petRepository.findPetByPetTypeName(name);
+        List<PetDto> list = petList.stream()
+                .map(pet -> modelMapper.map(pet, PetDto.class))
+                .collect(Collectors.toList());
+        return list;
     }
 
     @Override
     public List<PetDto> findByOwnerFirstNameAndOwnerLastName(String firstName, String lastName) {
-        return null;
+        return petRepository.findPetByOwnerFirstNameAndOwnerLastName(firstName, lastName)
+                .stream()
+                .map(pet -> modelMapper.map(pet, PetDto.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<PetDto> findByOwnerTelephone(String telephone) {
-        return null;
+        List<Pet> petList = new ArrayList<>();
+        petRepository.findByOwnerTelephone(telephone);
+        List<PetDto> list = petList.stream()
+                .map(pet -> modelMapper.map(pet, PetDto.class))
+                .collect(Collectors.toList());
+        return list;
     }
 
 
-    // todo: implement PetService Interface
 }
