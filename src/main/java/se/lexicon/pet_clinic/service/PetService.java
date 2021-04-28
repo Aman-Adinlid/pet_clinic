@@ -1,6 +1,8 @@
 package se.lexicon.pet_clinic.service;
 
 import se.lexicon.pet_clinic.dto.PetDto;
+import se.lexicon.pet_clinic.entity.Owner;
+import se.lexicon.pet_clinic.entity.PetType;
 import se.lexicon.pet_clinic.exception.DataNotFoundException;
 
 import java.util.List;
@@ -19,11 +21,11 @@ public interface PetService {
 
     List<PetDto> findByName(String name);
 
-    List<PetDto> findByPetTyeName(String name);
+    List<PetDto> findByPetTyeName(PetType name);
 
-    List<PetDto> findByOwnerFirstNameAndOwnerLastName(String firstName, String lastName);
+    List<PetDto> findByOwnerFirstNameAndOwnerLastName(Owner firstName, Owner lastName);
 
-    List<PetDto> findByOwnerTelephone(String telephone);
+    List<PetDto> findByOwnerTelephone(Owner telephone);
 
 
 }
