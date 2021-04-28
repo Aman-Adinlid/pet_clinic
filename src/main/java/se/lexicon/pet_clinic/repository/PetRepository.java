@@ -1,12 +1,19 @@
 package se.lexicon.pet_clinic.repository;
 
 
-public interface PetRepository {
+import org.springframework.data.repository.CrudRepository;
+import se.lexicon.pet_clinic.entity.Pet;
+import se.lexicon.pet_clinic.entity.PetType;
 
-    // todo: implement basic CRUD
+import java.util.List;
 
-    //todo: select pet by name
-    //todo: select pet by pet type name
-    //todo: select pet by owner first name and last name
-    //todo: select pet by owner telephone
+public interface PetRepository extends CrudRepository<Pet, String> {
+
+    List<Pet> findByName(String name);
+
+    List<Pet> findPetByPetType(PetType petType);
+
+    List<Pet> findPetByOwnerFirstNameAndOwnerLastName(String firstName, String lastName);
+
+    List<Pet> findByOwnerTelephone(String telephone);
 }
